@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, CardActionArea } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 export default function FilmCard({ 
@@ -55,13 +56,19 @@ export default function FilmCard({
                }}>
                 {time}
               </Typography>
-              <button onClick={handleClik} style={{
+              <Link 
+              to={`/films/${id}`} 
+              style={{
+                textDecoration:'none',
+                display:'flex',
+                justifyContent:'center',
+                alignItems:'center',
                 border: "1px solid #E50914", 
                 background: "#E50914 ",
                 width: 100,
                 height: 30, 
                 color: "#fff"
-               }}>SHOW MORE</button>
+               }}>SHOW MORE</Link>
 
             </Box>
         </Box>

@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import logoImage from "./logo.png";
 import { NavLink } from 'react-router-dom';
 import './ResponsiveAppBar.css';
-import MENU from '/constants/constants';
+import {MENU} from '../../constants/constants';
 
 
 const pages = ['Home', 'Films', 'TV shows'];
@@ -82,11 +82,14 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>        
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:"center" }}>
-            {MANU.map((page) => (
-              <NavLink className={({isActive}) => `NavLink ${isActive ? 'isActive' :''}`}
-                to={page}
+            {MENU.map(({name, link}, index) => (
+              <NavLink 
+                key={index} 
+                className={({isActive}) => `NavLink ${isActive ? 'isActive' :''}`
+               }
+                to={link}
               >
-                {page}
+                {name}
               </NavLink>
             ))}
           </Box> 

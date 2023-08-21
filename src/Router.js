@@ -3,6 +3,7 @@ import Main from './layouts/Main';
 import Home from './pages/Home';
 import Films from './pages/Films';
 import NotFaund from './pages/NotFaund';
+import FilmDetails from './pages/FilmDetails';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
         path: '/films',
         element: <Films/>
       },
+      {
+        path: '/films/:filmId',
+        element: <FilmDetails/>
+      }
     ]
   }
 ])
