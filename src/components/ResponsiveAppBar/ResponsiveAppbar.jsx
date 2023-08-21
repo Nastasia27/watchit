@@ -11,10 +11,13 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import logoImage from "./logo.png";
+import { NavLink } from 'react-router-dom';
+import './ResponsiveAppBar.css';
+import MENU from '/constants/constants';
 
-const pages = ['Home', 'Movie', 'TV shows'];
+
+const pages = ['Home', 'Films', 'TV shows'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -78,17 +81,15 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>        
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:"center" }}>
+            {MANU.map((page) => (
+              <NavLink className={({isActive}) => `NavLink ${isActive ? 'isActive' :''}`}
+                to={page}
               >
                 {page}
-              </Button>
+              </NavLink>
             ))}
-          </Box>
+          </Box> 
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

@@ -1,0 +1,14 @@
+.NavLink {
+    text-decoration: none;
+    color: white;
+    margin: 0 20px;
+    text-transform: uppercase;
+    font-weight: 400;
+    
+    
+}
+
+.isActive {
+    color: red;
+    font-weight: 400;
+}
