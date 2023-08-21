@@ -3,36 +3,21 @@ import './App.css';
 import ResponsiveAppBar from './components/ResponsiveAppBar/ResponsiveAppbar';
 import FilmCard from './components/ResponsiveAppBar/FilmCard/FilmCard';
 import { Grid } from '@mui/material';
-import axios from "axios";
 import { useState, useEffect, useRef } from 'react';
+import useRequest from './hooks/useRequest';
 
 
 
 function App() {
-  const [apiData, setApiData] = useState([]);
+  
   const [search, setSearch] = useState('');
   const searchRef = useRef('');
+  const apiData = useRequest(search);
 
   useEffect(() => {
     searchRef.current.focus();
   },[])
-  useEffect(() => {
-    async function makeRequest(){
-      try {
-        if (search.length > 2) {
-          const response = await axios.get(`https://api.tvmaze.com/search/shows?q=${search}`);
-          setApiData(response.data);
-        }
-        if (search.length === 0) {
-          setApiData([]);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-      
-    }
-    makeRequest();
-  }, [search]);
+  
 
   const handleCardClick = (id) => {
     console.log("ID:", id)
