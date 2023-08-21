@@ -4,14 +4,18 @@ import ResponsiveAppBar from './components/ResponsiveAppBar/ResponsiveAppbar';
 import FilmCard from './components/ResponsiveAppBar/FilmCard/FilmCard';
 import { Grid } from '@mui/material';
 import axios from "axios";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 
 
 function App() {
   const [apiData, setApiData] = useState([]);
   const [search, setSearch] = useState('');
-  console.log(apiData);
+  const searchRef = useRef('');
+
+  useEffect(() => {
+    searchRef.current.focus();
+  },[])
   useEffect(() => {
     async function makeRequest(){
       try {
@@ -42,7 +46,7 @@ function App() {
   return (
     <div className="App">
       <ResponsiveAppBar/>
-      <input type='text' value={search} onChange={handleSearch}/>
+      <input type='text' value={search} onChange={handleSearch} ref={searchRef}/>
       <Grid container spacing={2} sx={{ padding: "20px" }}>
       {apiData.map(({show}) =>  (
         <Grid item xs={3} key={show.id}>
