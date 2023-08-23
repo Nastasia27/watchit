@@ -25,8 +25,6 @@ function Header({name, genres=[], premiered, averageRuntime, image, rating={}}) 
       );
 
       
-      console.log(genres[0]);
-      console.log(rating.avarage);
       const card = (
         <Grid sx={{
             display:'flex',
