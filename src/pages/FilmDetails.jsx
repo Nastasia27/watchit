@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Header from "./FilmDetailscomponents/Header";
+import Tags from "./FilmDetailscomponents/TegsComponent";
 
 
 function FilmDetails() {
@@ -25,7 +26,8 @@ function FilmDetails() {
 
 
     return (
-       <Header 
+      <>
+      <Header 
        name={name}
        genres={genres}
        premiered={premiered}
@@ -33,6 +35,12 @@ function FilmDetails() {
        image={image}
        rating={rating}
        />
+
+       <Tags
+        genres={genres}
+        />
+      </>
+       
        
     );
     

@@ -1,14 +1,11 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Grid, IconButton } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
-import StarIcon from '@mui/icons-material/Star';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 
