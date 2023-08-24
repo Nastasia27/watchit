@@ -7,11 +7,37 @@ import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
+
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
-});
+  components:{
+    MuiTab: {
+      styleOverrides:{
+        textColorSecondary:{
+          color:"red"
+        },
+        root:{
+          '&.Mui-selected': {
+            color:'red',
+            borderBottom: '2px solid red'
+          }
+        }
+      }
+    },
+    MuiTabsIndicator: {
+      styleOverrides: {
+        root: {
+              backgroundColor: 'red',
+              color: 'red',
+              borderBottom: 'red'
+            },
+        }
+      },
+    },
+  },
+);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
