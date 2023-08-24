@@ -9,6 +9,7 @@ function Home() {
   const [search, setSearch] = useState('');
   const searchRef = useRef('');
   const apiData = useRequest(search);
+  console.log(apiData);
 
   useEffect(() => {
     searchRef.current.focus();

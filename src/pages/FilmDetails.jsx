@@ -4,11 +4,12 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Header from "./FilmDetailscomponents/Header";
 import Tags from "./FilmDetailscomponents/TegsComponent";
-
+import Starring from "./FilmDetailscomponents/Starring";
 
 function FilmDetails() {
     const [showData, setShowData] = useState([]);
     const {filmId} = useParams();
+    console.log(showData)
 
     useEffect(() => {
         async function requestAboutFilm(){
@@ -39,6 +40,7 @@ function FilmDetails() {
        <Tags
         genres={genres}
         />
+        <Starring/>
       </>
        
        
