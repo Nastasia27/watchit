@@ -44,7 +44,7 @@ function Header({name, genres=[], premiered, averageRuntime, image, rating={}}) 
                  {rating.average/2}
               </Typography>
             </Grid>
-            <Typography variant="body1" sx={{fontWeight:'600'}} color="#691814">
+            <Typography variant="body1" sx={{fontWeight:'600'}} color="rgb(225, 0, 0)">
               {genres[0]} 
             </Typography>
             <Typography variant="body2">
