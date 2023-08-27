@@ -3,26 +3,31 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { Box } from '@mui/material';
 
 export default function StarCard({
     name,
-    role
+    role,
+    image
 }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ display: 'flex' , width:300, alignItems:'center' }}>
       <CardMedia
-        sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
+        component="img"
+        sx={{ width: 150 }}
+        image={image}
+        title={name}
       />
+      <Box>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Name {name}
+        <Typography gutterBottom variant="h6" component="div">
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Role {role}
+          As {role}
         </Typography>
       </CardContent>
+      </Box>
     </Card>
   );
 }
