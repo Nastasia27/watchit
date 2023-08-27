@@ -6,12 +6,12 @@ import Footer from "../pages/FilmDetailscomponents/Footer";
 
 function Main() {
     return (
-      <div className="App">
+      <div className="App" style={{position:'relative'}}>
           <ResponsiveAppBar/>
           <Grid container >
-           <Outlet />
+           <Outlet/>
           </Grid>
-          <Footer/>
+          <Footer />
         </div>
     
         

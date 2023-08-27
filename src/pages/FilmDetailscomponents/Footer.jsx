@@ -9,12 +9,12 @@ import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 function Footer () {
-    return(
+    return( 
         <Grid container spacing={3} 
            direction="row"
            justifyContent="space-around"
            alignItems="center"
-           sx={{margin:'50px 20px', display:'flex', alignItems:'flex-start'}}
+           sx={{margin:'50px 20px', display:'flex', alignItems:'flex-start', position:'fixed', bottom:0}}
            >
            <Grid item xs={12} md={8}>
                <Stack spacing={2} direction="row">
