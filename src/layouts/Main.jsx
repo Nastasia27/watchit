@@ -1,6 +1,7 @@
 import ResponsiveAppBar from "../components/ResponsiveAppBar/ResponsiveAppbar";
 import { Grid } from "@mui/material";
 import { Outlet } from "react-router";
+import Footer from "../pages/FilmDetailscomponents/Footer";
 
 
 function Main() {
@@ -10,6 +11,7 @@ function Main() {
           <Grid container >
            <Outlet />
           </Grid>
+          <Footer/>
         </div>
     
         
