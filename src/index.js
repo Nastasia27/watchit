@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import store from './store/store';
+import { Provider } from 'react-redux';
 
 
 const darkTheme = createTheme({
@@ -44,7 +46,9 @@ root.render(
   <ThemeProvider theme={darkTheme}>
      <CssBaseline />
     <React.StrictMode>
-      <RouterProvider router={router}/>
+       <Provider store={store}>
+         <RouterProvider router={router}/>
+       </Provider>
     </React.StrictMode>
   </ThemeProvider>
 );
