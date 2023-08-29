@@ -8,7 +8,7 @@ function Main() {
     return (
       <div className="App" style={{position:'relative'}}>
           <ResponsiveAppBar/>
-          <Grid container >
+          <Grid container sx={{minHeight:"100vh"}}>
            <Outlet/>
           </Grid>
           <Footer />

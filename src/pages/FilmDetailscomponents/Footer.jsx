@@ -10,11 +10,12 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 function Footer () {
     return( 
+      <footer >
         <Grid container spacing={3} 
            direction="row"
            justifyContent="space-around"
            alignItems="center"
-           sx={{margin:'50px 20px', display:'flex', alignItems:'flex-start', position:'fixed', bottom:0}}
+           sx={{margin:'50px 20px', display:'flex', alignItems:'flex-start'}}
            >
            <Grid item xs={12} md={8}>
                <Stack spacing={2} direction="row">
@@ -48,6 +49,7 @@ function Footer () {
             </Stack>
            </Grid>
         </Grid>
+        </footer>
     )
 }
 
