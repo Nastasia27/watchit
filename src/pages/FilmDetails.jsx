@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import Header from "./FilmDetailscomponents/Header";
 import Tags from "./FilmDetailscomponents/TegsComponent";
 import Starring from "./FilmDetailscomponents/Starring";
+import TabsComponent from "./FilmDetailscomponents/TabsComponent";
+
 
 function FilmDetails() {
     const [showData, setShowData] = useState([]);
@@ -23,7 +25,7 @@ function FilmDetails() {
         requestAboutFilm();
       }, [filmId]);
 
-      const {name, genres, premiered, averageRuntime, image, rating } = showData;
+      const {name, genres, premiered, averageRuntime, image, rating, summary } = showData;
 
 
     return (
@@ -41,6 +43,9 @@ function FilmDetails() {
         genres={genres}
         />
         <Starring/>
+        <TabsComponent
+        summary={summary}
+        rating={rating}/>
       </>
        
        
