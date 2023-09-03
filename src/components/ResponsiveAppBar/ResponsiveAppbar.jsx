@@ -15,6 +15,8 @@ import logoImage from "./logo.png";
 import { NavLink } from 'react-router-dom';
 import './ResponsiveAppBar.css';
 import {MENU} from '../../constants/constants';
+import Input from './Input';
+
 
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
@@ -138,7 +140,7 @@ function ResponsiveAppBar() {
               </NavLink>
             ))}
           </Box> 
-
+          <Input></Input>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
