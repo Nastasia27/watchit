@@ -3,12 +3,13 @@ import FilmCard from '../components/ResponsiveAppBar/FilmCard/FilmCard';
 import { Grid } from '@mui/material';
 import { useState, useEffect, useRef } from 'react';
 import useRequest from '../hooks/useRequest';
-
-
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
+import useRequestCrime from '../hooks/useRequestCrime';
+import {Typography} from '@mui/material';
+import { Link } from 'react-router-dom';
 
-// Import Swiper styles
+
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -16,19 +17,13 @@ import '../Swiper.css'
 import 'swiper/css/effect-fade';
 
 
-// import required modules
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { EffectCoverflow } from 'swiper/modules';
-
-
-
-
 
 function Home() {
   const [search, setSearch] = useState('');
   const searchRef = useRef('');
   const apiData = useRequest(search);
-  console.log(apiData);
+  const crimeFilms = useRequestCrime('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Comedy');
+  console.log(crimeFilms);
 
   useEffect(() => {
     searchRef.current.focus();
@@ -41,14 +36,17 @@ function Home() {
     setSearch(e.target.value)
   }
 
+
   return (
     <>
-      <input 
+    <input 
         type='text' 
         value={search} 
         onChange={handleSearch} 
         ref={searchRef}
       />
+    <Grid container>
+      <Typography sx={{textTransform:'uppercase'}} margin='auto' paddingTop="40px" textAlign="center" variant='h5'>Comedy films</Typography>
       <Grid container >
       <Swiper
         effect={'coverflow'}
@@ -70,64 +68,18 @@ function Home() {
         modules={[EffectCoverflow, Pagination, Autoplay]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+        {crimeFilms.map((show, index) =>  (
+          <Grid item xs={3} key={index}>
+            <SwiperSlide>
+            <a 
+              href={`/films/${show.id}`} >
+                <img src={show.image.original} />
+              </a>
         </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-        </SwiperSlide>
+          </Grid>
+        ))}
       </Swiper>
-      {/* <Swiper
-        effect={'coverflow'}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={'auto'}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
-        pagination={true}
-        modules={[Autoplay, EffectCoverflow, Pagination]}
-        className="mySwiper"
-
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        
-        navigation={true}
-
-      >
-        <SwiperSlide> <img src="https://swiperjs.com/demos/images/nature-1.jpg" /></SwiperSlide>
-        <SwiperSlide><img src="https://static.tvmaze.com/uploads/images/original_untouched/100/250748.jpg" /></SwiperSlide>
-        <SwiperSlide><img src="https://static.tvmaze.com/uploads/images/original_untouched/306/766262.jpg" /></SwiperSlide>
-        
-      </Swiper> */}
-      </Grid>
+      </Grid>  
       <Grid container spacing={2} sx={{ padding: "20px" }}>
         {apiData.map(({show}) =>  (
           <Grid item xs={3} key={show.id}>
@@ -141,6 +93,8 @@ function Home() {
           </Grid>
         ))}
       </Grid>    
+    </Grid>
+      
     </>
   );
 }
