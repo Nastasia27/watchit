@@ -141,15 +141,6 @@ function ResponsiveAppBar() {
             ))}
           </Box> 
           <Input></Input>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

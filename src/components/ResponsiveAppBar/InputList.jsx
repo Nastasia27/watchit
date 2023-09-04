@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 
 import Typography from '@mui/material/Typography';
+import './Input.css';
 
 
 
@@ -16,7 +17,7 @@ export default function InputList({
 
  
   return (
-    <Card sx={{ display: 'flex' }}>
+    <Card sx={{ display: 'flex' }} className='list-item '>
       <CardMedia
         component="img"
         sx={{ width: 50 , height: 60}}

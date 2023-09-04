@@ -1,0 +1,29 @@
+.list-item-link {
+    text-decoration: none; 
+  }
+  
+  .list-item {
+    padding: 8px; 
+    transition: background-color 0.3s; 
+  }
+  
+  .list-item:hover {
+    background-color: rgba(48, 48, 48, 0.39); 
+  }
+
+ /* Применяем стили к .MuiInputBase-input внутри StyledInputBase */
+.StyledInputBase .MuiInputBase-input {
+  padding: 8px 8px 8px calc(1em + 32px); /* Ваши стили для padding */
+  transition: width 0.3s; /* Ваши стили для transition */
+  width: 100%;
+}
+
+.StyledInputBase .MuiInputBase-input:focus {
+    width: 20ch !important;
+  }
+
+  @media (max-width:600px) {
+    .StyledInputBase .MuiInputBase-input:focus {
+        width: 10ch !important;
+      }
+  }
