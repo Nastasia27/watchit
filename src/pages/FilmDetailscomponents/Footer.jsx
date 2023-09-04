@@ -15,9 +15,9 @@ function Footer () {
            direction="row"
            justifyContent="space-around"
            alignItems="center"
-           sx={{margin:'50px 20px', display:'flex', alignItems:'flex-start'}}
+           sx={{display:'flex', alignItems:'flex-start'}}
            >
-           <Grid item xs={12} md={8}>
+           <Grid item xs={11} md={8}>
                <Stack spacing={2} direction="row">
                   <Button variant="text">Terms Of Use</Button>
                   <Button variant="text">Privacy-policy</Button>
@@ -30,10 +30,10 @@ function Footer () {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Typography variant="body2">
+            <Typography variant="body2" style={{margin:'20px'}}>
                 Follow Us:
             </Typography>
-            <Stack direction="row" spacing={1}>
+            <Stack direction="row" spacing={1} style={{margin:'20px'}}>
               <IconButton aria-label="delete">
                  <FacebookIcon />
               </IconButton>

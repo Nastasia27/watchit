@@ -6,7 +6,7 @@ import useRequest from '../hooks/useRequest';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
-import useRequestCrime from '../hooks/useRequestCrime';
+import useRequestCrime from '../hooks/useRequestNew';
 import {Typography} from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -19,6 +19,7 @@ import 'swiper/css/effect-fade';
 
 import {useDispatch, useSelector } from 'react-redux';
 import { setSearch } from '../store/SearchSlice';
+import useRequestNew from '../hooks/useRequestNew';
 
 
 
@@ -29,7 +30,7 @@ function Home() {
   const searchRef = useRef('');
 
 
-  const crimeFilms = useRequestCrime('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Comedy');
+  const crimeFilms = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Comedy');
   console.log(crimeFilms);
 
 
@@ -51,8 +52,6 @@ function Home() {
 
   return (
     <>
-
-    <input 
     <Grid container 
       direction="row"
       justifyContent="center"
@@ -63,6 +62,7 @@ function Home() {
         onChange={handleSearch} 
         ref={searchRef}
       />
+      </Grid>
     <Grid container>
       <Typography sx={{textTransform:'uppercase'}} margin='auto' paddingTop="40px" textAlign="center" variant='h5'>Comedy films</Typography>
       <Grid container >

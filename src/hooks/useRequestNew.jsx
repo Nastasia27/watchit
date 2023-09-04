@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from 'react';
 
-function useRequestCrime (url) {
+function useRequestNew (url) {
     const [apiData, setApiData] = useState([]);
     
     useEffect(() => {
@@ -19,4 +19,4 @@ function useRequestCrime (url) {
     return apiData;
 }
 
-export default useRequestCrime;
+export default useRequestNew;
