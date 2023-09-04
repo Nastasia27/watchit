@@ -11,8 +11,10 @@ function Home() {
   //const [search, setSearch] = useState('');
   const apiSearch = useSelector((state) => state.search.search)
   const searchRef = useRef('');
+
   const apiData = useRequest(apiSearch);
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     searchRef.current.focus();
