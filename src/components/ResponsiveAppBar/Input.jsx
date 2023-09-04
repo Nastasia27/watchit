@@ -22,9 +22,8 @@ const Search = styled('div')(({ theme }) => ({
   }));
   
   const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
+    padding: theme.spacing(0, 1),
     height: '100%',
-    
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
@@ -44,7 +43,14 @@ function Input() {
 
 
     return (
-        <Search sx={{display:'flex', direction:'row', justifyContent:'flex-start', alignItems:'center'}}  >
+        <Search sx={{
+            display:'flex', 
+            direction:'row', 
+            justifyContent:'flex-start', 
+            alignItems:'center',
+            marginRight:'10px',
+            height:'50px'
+            }}  >
           <SearchIconWrapper>
              <SearchIcon />
           </SearchIconWrapper>
@@ -72,13 +78,17 @@ function Input() {
                 renderInput={(params) => (
                     <TextField
                         {...params}
-  
+                        label='search'
+                        variant='outlined'
+                        size="small"
+                        fullWidth
                         value={search}
                         onChange={handleSearch}
                         ref={searchRef}
                         InputProps={{
                             ...params.InputProps,
                             type: 'search',
+                            style:{border:'none'}
                         }}
                     />
                 )}
@@ -90,12 +100,3 @@ function Input() {
 
 export default Input;
 
-{/* <Search>
-<SearchIconWrapper>
-  <SearchIcon />
-</SearchIconWrapper>
-<StyledInputBase
-  placeholder="Search…"
-  inputProps={{ 'aria-label': 'search' }}
-/>
-</Search> */}

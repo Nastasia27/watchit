@@ -13,17 +13,24 @@
 
  /* Применяем стили к .MuiInputBase-input внутри StyledInputBase */
 .StyledInputBase .MuiInputBase-input {
-  padding: 8px 8px 8px calc(1em + 32px); /* Ваши стили для padding */
+  padding: 8px 8px 8px 8px ; /* Ваши стили для padding */
+  margin-right: 2px;
   transition: width 0.3s; /* Ваши стили для transition */
   width: 100%;
 }
 
 .StyledInputBase .MuiInputBase-input:focus {
-    width: 20ch !important;
+    width: 30ch !important;
   }
 
   @media (max-width:600px) {
     .StyledInputBase .MuiInputBase-input:focus {
-        width: 10ch !important;
+        width: 15ch !important;
+      }
+  }
+
+  @media (max-width:400px) {
+    .StyledInputBase .MuiInputBase-input:focus {
+        width: 15ch !important;
       }
   }
