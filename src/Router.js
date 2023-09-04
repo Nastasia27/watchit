@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Films from './pages/Films';
 import NotFaund from './pages/NotFaund';
 import FilmDetails from './pages/FilmDetails';
+import Auth from './layouts/Auth';
+import Register from './pages/Auth/Register';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,21 @@ const router = createBrowserRouter([
         path: '/films/:filmId',
         element: <FilmDetails/>
       }
+    ]
+  },
+  {
+    path: 'auth/',
+    element: <Auth/>,
+    errorElement: <NotFaund/>,
+    children: [
+      {
+        path: 'register',
+        element: <Register/>,
+      },
+      // {
+      //   path: '/films',
+      //   element: <Films/>
+      // }
     ]
   }
 ])

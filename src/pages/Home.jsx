@@ -3,6 +3,7 @@ import FilmCard from '../components/ResponsiveAppBar/FilmCard/FilmCard';
 import { Grid } from '@mui/material';
 import { useState, useEffect, useRef } from 'react';
 import useRequest from '../hooks/useRequest';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
 import useRequestCrime from '../hooks/useRequestCrime';
@@ -16,14 +17,25 @@ import 'swiper/css/navigation';
 import '../Swiper.css'
 import 'swiper/css/effect-fade';
 
+import {useDispatch, useSelector } from 'react-redux';
+import { setSearch } from '../store/SearchSlice';
+
+
 
 
 function Home() {
-  const [search, setSearch] = useState('');
+  //const [search, setSearch] = useState('');
+  const apiSearch = useSelector((state) => state.search.search)
   const searchRef = useRef('');
-  const apiData = useRequest(search);
+
+
   const crimeFilms = useRequestCrime('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Comedy');
   console.log(crimeFilms);
+
+
+  const apiData = useRequest(apiSearch);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     searchRef.current.focus();
@@ -33,15 +45,21 @@ function Home() {
     console.log("ID:", id)
   }
   const handleSearch = (e) => {
-    setSearch(e.target.value)
+    dispatch (setSearch(e.target.value));
   }
 
 
   return (
     <>
+
     <input 
+    <Grid container 
+      direction="row"
+      justifyContent="center"
+      alignItems="center" sx={{paddingTop:'20px'}}>
+      <input 
         type='text' 
-        value={search} 
+        value={apiSearch} 
         onChange={handleSearch} 
         ref={searchRef}
       />
@@ -94,7 +112,7 @@ function Home() {
         ))}
       </Grid>    
     </Grid>
-      
+
     </>
   );
 }
