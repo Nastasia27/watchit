@@ -37,11 +37,6 @@ function Home() {
   const apiData = useRequest(apiSearch);
   const dispatch = useDispatch();
 
-
-  useEffect(() => {
-    searchRef.current.focus();
-  },[])
-
   const handleCardClick = (id) => {
     console.log("ID:", id)
   }
@@ -56,12 +51,6 @@ function Home() {
       direction="row"
       justifyContent="center"
       alignItems="center" sx={{paddingTop:'20px'}}>
-      <input 
-        type='text' 
-        value={apiSearch} 
-        onChange={handleSearch} 
-        ref={searchRef}
-      />
       </Grid>
     <Grid container>
       <Typography sx={{textTransform:'uppercase'}} margin='auto' paddingTop="40px" textAlign="center" variant='h5'>Comedy films</Typography>
