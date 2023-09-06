@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import { Link } from 'react-router-dom';
 
 
 function Starring() {
@@ -48,11 +49,17 @@ function Starring() {
           <Grid item xs={12} sm={6} md={6} key={index} direction="row"
           justifyContent="center"
           alignItems="center">
-            <StarCard
+            <Link 
+              to={`/films/:filmId/actor/${person.id}`} 
+              style={{
+                textDecoration:'none',
+               }}>
+                <StarCard
             name={person.name}
             role={character.name}
             image={person.image ? person.image.medium : ''} 
             />
+               </Link>
           </Grid>
         ))}
       </Grid> 

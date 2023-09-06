@@ -47,11 +47,6 @@ function Home() {
 
   return (
     <>
-    <Grid container 
-      direction="row"
-      justifyContent="center"
-      alignItems="center" sx={{paddingTop:'20px'}}>
-      </Grid>
     <Grid container>
       <Typography sx={{textTransform:'uppercase'}} margin='auto' paddingTop="40px" textAlign="center" variant='h5'>Comedy films</Typography>
       <Grid container >

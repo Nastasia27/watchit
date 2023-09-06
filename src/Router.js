@@ -6,6 +6,7 @@ import NotFaund from './pages/NotFaund';
 import FilmDetails from './pages/FilmDetails';
 import Auth from './layouts/Auth';
 import Register from './pages/Auth/Register';
+import Actor from './pages/Actor';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/films/:filmId',
         element: <FilmDetails/>
+      },
+      {
+        path: '/films/:filmId/actor/:Id',
+        element: <Actor/>
       }
     ]
   },
