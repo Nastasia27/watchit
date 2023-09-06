@@ -20,6 +20,7 @@ import 'swiper/css/effect-fade';
 import {useDispatch, useSelector } from 'react-redux';
 import { setSearch } from '../store/SearchSlice';
 import useRequestNew from '../hooks/useRequestNew';
+import Slider from './FilmDetailscomponents/Slider/Slider';
 
 
 
@@ -30,8 +31,8 @@ function Home() {
   const searchRef = useRef('');
 
 
-  const crimeFilms = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Comedy');
-  console.log(crimeFilms);
+  const comedyFilms = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Comedy');
+  console.log(comedyFilms);
 
 
   const apiData = useRequest(apiSearch);
@@ -70,7 +71,7 @@ function Home() {
         modules={[EffectCoverflow, Pagination, Autoplay]}
         className="mySwiper"
       >
-        {crimeFilms.map((show, index) =>  (
+        {comedyFilms.map((show, index) =>  (
           <Grid item xs={3} key={index}>
             <SwiperSlide>
             <a 
@@ -82,21 +83,10 @@ function Home() {
         ))}
       </Swiper>
       </Grid>  
-      <Grid container spacing={2} sx={{ padding: "20px" }}>
-        {apiData.map(({show}) =>  (
-          <Grid item xs={3} key={show.id}>
-            <FilmCard
-             id={show.id}
-             name={show.name}
-             time={show.premiered}
-             image={show.image ? show.image.medium : ''}
-             eventClick={handleCardClick}
-            />
-          </Grid>
-        ))}
-      </Grid>    
+          <Grid>
+            <Slider></Slider> 
+          </Grid>  
     </Grid>
-
     </>
   );
 }

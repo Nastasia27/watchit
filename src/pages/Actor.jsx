@@ -9,12 +9,24 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import useRequestNew from "../hooks/useRequestNew";
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+import '../../src/pages/FilmDetailscomponents/Slider/styles.css';
+import { Pagination } from 'swiper/modules';
+
+
 
 function Actor() {
+  const [filmData, setFimData] = useState([]);
+  const crimeFilms = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Crime');
   const [actorData, setActorData] = useState({});
   const {Id} = useParams();
   console.log(actorData);
   console.log(Id);
+  console.log(filmData);
 
   useEffect(() => {
     async function actorRequest(){
@@ -23,6 +35,8 @@ function Actor() {
             `https://api.tvmaze.com/people/${Id}?embed=castcredits`);
         setActorData(response.data);
         
+        setFimData(response.data._embedded.castcredits.map((credit) => credit._links.show.href)
+        );
       } catch (error) {
         console.error(error);
       }
@@ -44,6 +58,54 @@ function Actor() {
             <Grid item sx={{margin:'0 40px'}}>
                 <h1 style={{textTransform:'uppercase'}}>{actorData.name}</h1>
 
+                <Grid >
+                    <Swiper
+                        slidesPerView={6}
+                        spaceBetween={30}
+                        pagination={{
+                        clickable: true,
+                        }}
+                        modules={[Pagination]}
+                        className="mySwiper"
+                    >
+                        {crimeFilms.map((show, index) =>  (
+                            <Grid conteiner key={index}>
+                                <SwiperSlide key={index}>
+                                    {show.image && show.image.original &&(
+                                        <a  href={`/films/${show.id}`} >
+                                        <img src={show.image.medium} />
+                                    </a>
+                                    )}
+                                </SwiperSlide>
+                        </Grid>
+                        ))}
+                        
+                    </Swiper>
+              </Grid>
+              <Grid >
+                    <Swiper
+                        slidesPerView={6}
+                        spaceBetween={30}
+                        pagination={{
+                        clickable: true,
+                        }}
+                        modules={[Pagination]}
+                        className="mySwiper"
+                    >
+                        {crimeFilms.map((show, index) =>  (
+                            <Grid conteiner key={index}>
+                                <SwiperSlide key={index}>
+                                    {show.image && show.image.original &&(
+                                        <a  href={`/films/${show.id}`} >
+                                        <img src={show.image.medium} />
+                                    </a>
+                                    )}
+                                </SwiperSlide>
+                        </Grid>
+                        ))}
+                        
+                    </Swiper>
+       </Grid>
                 
 
             </Grid>         

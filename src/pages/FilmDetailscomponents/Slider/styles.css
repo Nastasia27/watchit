@@ -1,0 +1,19 @@
+ 
+ .swiper {
+  width: 1000px
+}
+  
+  .swiper-slide {
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+
+    object-fit: cover;
+  }
+  
