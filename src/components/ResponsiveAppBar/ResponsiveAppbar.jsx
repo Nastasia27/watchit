@@ -12,15 +12,23 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logoImage from "./logo.png";
+import logomin from './logomin.PNG';
 import { NavLink } from 'react-router-dom';
 import './ResponsiveAppBar.css';
 import {MENU} from '../../constants/constants';
+import Input from './Input';
 
 
-const pages = ['Home', 'Films', 'TV shows'];
+import { styled, alpha } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
+
+
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -43,7 +51,8 @@ function ResponsiveAppBar() {
     <AppBar position="static" sx={{backgroundColor:"rgba(18, 17, 18, 0.79)"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-            <img src={logoImage} alt="logo" width={200}/>
+            <img className='toolbar-image-2' src={logoImage} alt="logo" width={200}/>
+            <img className='toolbar-image-1' src={logomin} alt="logo" width={50}/>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -74,9 +83,9 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {MENU.map(({name, link}, index) => (
+                <MenuItem key={index} onClick={handleCloseNavMenu}>
+                  <Typography sx={{textAlign:'center', textTransform:'uppercase'}}>{name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -93,6 +102,7 @@ function ResponsiveAppBar() {
               </NavLink>
             ))}
           </Box> 
+          <Input></Input>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
