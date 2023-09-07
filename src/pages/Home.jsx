@@ -29,6 +29,7 @@ function Home() {
   //const [search, setSearch] = useState('');
   const apiSearch = useSelector((state) => state.search.search)
   const searchRef = useRef('');
+  const crimeFilms = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Crime');
 
 
   const comedyFilms = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Comedy');
@@ -63,6 +64,7 @@ function Home() {
           modifier: 1,
           slideShadows: true,
         }}
+        style={{height:'400px'}}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -83,9 +85,37 @@ function Home() {
         ))}
       </Swiper>
       </Grid>  
-          <Grid>
-            <Slider></Slider> 
-          </Grid>  
+      <Typography sx={{textTransform:'uppercase'}} margin='auto' paddingTop="80px" textAlign="center" variant='h6'>Crime films</Typography>
+      <Grid container sx={{ display:'flex',
+          justifyContent:'center',
+            alignItems: 'center'}} >
+          <Swiper
+            slidesPerView={6}
+            spaceBetween={20}
+            pagination={{
+            clickable: true,
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+            style={{height:'250px', width:'1000px', margin:'auto', display:'flex',
+          justifyContent:'center',
+            alignItems: 'center',
+          padding:0}}
+           >
+            {crimeFilms.map((show, index) =>  (
+                <Grid conteiner key={index}>
+                    <SwiperSlide key={index} style={{height:'100%'}}>
+                        {show.image && show.image.original &&(
+                            <a  href={`/films/${show.id}`} >
+                            <img  src={show.image.medium} />
+                        </a>
+                        )}
+                    </SwiperSlide>
+              </Grid>
+            ))}
+            
+          </Swiper>
+       </Grid>
     </Grid>
     </>
   );

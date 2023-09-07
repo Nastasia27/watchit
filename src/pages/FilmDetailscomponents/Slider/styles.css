@@ -1,14 +1,23 @@
  
  .swiper {
-  width: 1000px
+  width: 1000px;
+  height: 400px;
+ 
+}
+@media (max-width: 600px) {
+  .swiper {
+    width: 400px;
+    height: 200px;
+}
+
 }
   
   .swiper-slide {
-  
+    height: 300px;
     /* Center slide text vertically */
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
   }
   
   .swiper-slide img {

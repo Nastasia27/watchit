@@ -23,6 +23,7 @@ function Actor() {
   const [filmData, setFimData] = useState([]);
   const crimeFilms = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Crime');
   const [actorData, setActorData] = useState({});
+  const [filmDataArray, setFilmDataArray] = useState([]);
   const {Id} = useParams();
   console.log(actorData);
   console.log(Id);
@@ -45,6 +46,25 @@ function Actor() {
     actorRequest();
   }, [Id]);
 
+  useEffect(() => {
+    async function fetchFilmData() {
+      try {
+        const allFilmData = filmData.map(async(filmLink) => {const filmResponse = await axios.get(filmLink);
+        return filmResponse.data;
+      });
+      console.log(allFilmData);
+      const filmDataArray = await Promise.all(allFilmData);
+      console.log(filmDataArray);
+      setFilmDataArray(filmDataArray);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    if (filmData.length > 0) {
+      fetchFilmData();
+    }
+  }, [filmData]);
+
     return(
         <>
           <Grid container sm={12} sx={{display:'flex', direction:'row', margin:'20px'}}>
@@ -55,22 +75,23 @@ function Actor() {
                 style={{width:'100%', maxWidth:'300px' }}
                />
             </Grid>
+            <h1 style={{textTransform:'uppercase', margin:'40px'}}>{actorData.name}</h1>
             <Grid item sx={{margin:'0 40px'}}>
-                <h1 style={{textTransform:'uppercase'}}>{actorData.name}</h1>
-
-                <Grid >
+                <h3>Acting</h3>
+                <Grid sx={4}>
                     <Swiper
-                        slidesPerView={6}
-                        spaceBetween={30}
+                        slidesPerView={4}
+                        spaceBetween={20}
                         pagination={{
                         clickable: true,
                         }}
                         modules={[Pagination]}
                         className="mySwiper"
+                        style={{padding:0}}
                     >
-                        {crimeFilms.map((show, index) =>  (
+                        {filmDataArray.map((show, index) =>  (
                             <Grid conteiner key={index}>
-                                <SwiperSlide key={index}>
+                                <SwiperSlide key={index} >
                                     {show.image && show.image.original &&(
                                         <a  href={`/films/${show.id}`} >
                                         <img src={show.image.medium} />
@@ -81,36 +102,10 @@ function Actor() {
                         ))}
                         
                     </Swiper>
-              </Grid>
-              <Grid >
-                    <Swiper
-                        slidesPerView={6}
-                        spaceBetween={30}
-                        pagination={{
-                        clickable: true,
-                        }}
-                        modules={[Pagination]}
-                        className="mySwiper"
-                    >
-                        {crimeFilms.map((show, index) =>  (
-                            <Grid conteiner key={index}>
-                                <SwiperSlide key={index}>
-                                    {show.image && show.image.original &&(
-                                        <a  href={`/films/${show.id}`} >
-                                        <img src={show.image.medium} />
-                                    </a>
-                                    )}
-                                </SwiperSlide>
-                        </Grid>
-                        ))}
-                        
-                    </Swiper>
-       </Grid>
-                
-
+              </Grid>        
             </Grid>         
           </Grid>
-          <Grid sx={{margin:'0 40px'}}>
+          <Grid sx={{margin:'0 50px'}}>
                 <Typography  style={{paddingTop:'30px', textTransform:'uppercase'}}>Personal information</Typography>
                 <Stack direction="row" spacing={1} style={{margin:'20px'}}>
                    <IconButton aria-label="delete" color="primary">
