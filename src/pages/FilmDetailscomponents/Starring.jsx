@@ -14,8 +14,6 @@ function Starring() {
   const [starringData, setStarringData] = useState([]);
   const {filmId} = useParams();
   const [visibleStarring, setVisibleStarring] = useState(2);
-  console.log(filmId)
-  console.log(starringData)
     
     useEffect(() => {
         async function starringRequest(){
@@ -50,7 +48,7 @@ function Starring() {
           justifyContent="center"
           alignItems="center">
             <Link 
-              to={`/films/:filmId/actor/${person.id}`} 
+              to={`/films/actor/${person.id}`} 
               style={{
                 textDecoration:'none',
                }}>

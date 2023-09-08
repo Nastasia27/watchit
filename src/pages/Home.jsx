@@ -33,7 +33,6 @@ function Home() {
 
 
   const comedyFilms = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Comedy');
-  console.log(comedyFilms);
 
 
   const apiData = useRequest(apiSearch);

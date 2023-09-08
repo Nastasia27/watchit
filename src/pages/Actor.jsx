@@ -25,9 +25,6 @@ function Actor() {
   const [actorData, setActorData] = useState({});
   const [filmDataArray, setFilmDataArray] = useState([]);
   const {Id} = useParams();
-  console.log(actorData);
-  console.log(Id);
-  console.log(filmData);
 
   useEffect(() => {
     async function actorRequest(){
@@ -52,9 +49,7 @@ function Actor() {
         const allFilmData = filmData.map(async(filmLink) => {const filmResponse = await axios.get(filmLink);
         return filmResponse.data;
       });
-      console.log(allFilmData);
       const filmDataArray = await Promise.all(allFilmData);
-      console.log(filmDataArray);
       setFilmDataArray(filmDataArray);
       } catch (error) {
         console.error(error);
