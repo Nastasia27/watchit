@@ -11,7 +11,6 @@ import TabsComponent from "./FilmDetailscomponents/TabsComponent";
 function FilmDetails() {
     const [showData, setShowData] = useState([]);
     const {filmId} = useParams();
-    console.log(showData)
 
     useEffect(() => {
         async function requestAboutFilm(){

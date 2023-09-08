@@ -15,7 +15,7 @@ function Footer () {
            direction="row"
            justifyContent="space-around"
            alignItems="center"
-           sx={{display:'flex', alignItems:'flex-start'}}
+           sx={{display:'flex', alignItems:'flex-start', marginTop:'40px'}}
            >
            <Grid item xs={11} md={8}>
                <Stack spacing={2} direction="row">
