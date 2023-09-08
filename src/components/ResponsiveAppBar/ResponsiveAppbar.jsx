@@ -17,6 +17,7 @@ import { NavLink } from 'react-router-dom';
 import './ResponsiveAppBar.css';
 import {MENU} from '../../constants/constants';
 import Input from './Input';
+import Link from '@mui/material/Link';
 
 
 import { styled, alpha } from '@mui/material/styles';
@@ -84,9 +85,9 @@ function ResponsiveAppBar() {
               }}
             >
               {MENU.map(({name, link}, index) => (
-                <MenuItem key={index} onClick={handleCloseNavMenu}>
+                <Link key={index} onClick={handleCloseNavMenu} href={link} underline="hover">
                   <Typography sx={{textAlign:'center', textTransform:'uppercase'}}>{name}</Typography>
-                </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>        

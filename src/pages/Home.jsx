@@ -63,7 +63,7 @@ function Home() {
           modifier: 1,
           slideShadows: true,
         }}
-        style={{height:'400px'}}
+        style={{height:'450px'}}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,

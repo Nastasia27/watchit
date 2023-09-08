@@ -23,13 +23,13 @@ function Header({name, genres=[], premiered, averageRuntime, image, rating={}}) 
 
       
       const card = (
-        <Grid sx={{
+        <Grid container xs={12} sx={{
             display:'flex',
             direction:"row",
             justifyContent:"space-between",
            }}>
           <CardContent>
-            <Grid sx={{
+            <Grid container xs={12} sx={{
                 display:'flex',
                 direction:"row",
                 alignItems:"center"
