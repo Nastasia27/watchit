@@ -17,6 +17,7 @@ function Slider() {
           <Swiper
             slidesPerView={6}
             spaceBetween={30}
+            loop={true} 
             pagination={{
             clickable: true,
             }}
