@@ -15,14 +15,14 @@ function Footer () {
            direction="row"
            justifyContent="space-around"
            alignItems="center"
-           sx={{display:'flex', alignItems:'flex-start', marginTop:'40px'}}
+           sx={{display:'flex', alignItems:'flex-start', margin:'40px 5px'}}
            >
-           <Grid item xs={11} md={8}>
+           <Grid item xs={11} md={8} >
                <Stack spacing={2} direction="row">
-                  <Button variant="text">Terms Of Use</Button>
-                  <Button variant="text">Privacy-policy</Button>
-                  <Button variant="text">FAQ</Button>
-                  <Button variant="text">Watch list</Button>
+                  <Button size="small"  variant="text">Terms Of Use</Button>
+                  <Button size="small" variant="text">Privacy-policy</Button>
+                  <Button size="small" variant="text">FAQ</Button>
+                  <Button size="small" variant="text">Watch list</Button>
                </Stack>
                <Typography variant="caption" >
                  © 2021 STREAMIT. All Rights Reserved. All videos and shows on this platform are trademarks of, and all related images and content are the property of, Streamit Inc. Duplication and copy of this is strictly prohibited. All rights reserved.
@@ -37,7 +37,7 @@ function Footer () {
               <IconButton aria-label="delete">
                  <FacebookIcon />
               </IconButton>
-              <IconButton aria-label="delete" disabled color="primary">
+              <IconButton aria-label="add an alarm" color="primary">
                  <TwitterIcon />
               </IconButton>
               <IconButton color="secondary" aria-label="add an alarm">
