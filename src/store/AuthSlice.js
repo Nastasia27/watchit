@@ -26,38 +26,38 @@ const AuthSlice = createSlice({
 
 export const { setToken, setLoading, setUserData } = AuthSlice.actions;
 
-export const handleRegistration = (data) => async (dispatch, getState) => {
-  dispatch(setLoading(true));
-  try {
-    const request = await axios.post(`https://dolphin-app-pc6ii.ondigitalocean.app/user`, data, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (request.data.verified) {
-      const verifyRequest = await axios.post(
-        `https://dolphin-app-pc6ii.ondigitalocean.app/user/verify-email`,
-        {
-          verification: request.data.verified,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      dispatch(
-        setUserData({
-          fullName: verifyRequest.data.fullName,
-          email: verifyRequest.data.email,
-        })
-      );
-      dispatch(setToken(verifyRequest.data.accessToken));
-      dispatch(setLoading(false));
-    }
-  } catch (err) {
-    console.error(err);
-  }
-};
+// export const handleRegistration = (data) => async (dispatch, getState) => {
+//   dispatch(setLoading(true));
+//   try {
+//     const request = await axios.post(`https://dolphin-app-pc6ii.ondigitalocean.app/user`, data, {
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     if (request.data.verified) {
+//       const verifyRequest = await axios.post(
+//         `https://dolphin-app-pc6ii.ondigitalocean.app/user/verify-email`,
+//         {
+//           verification: request.data.verified,
+//         },
+//         {
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//         }
+//       );
+//       dispatch(
+//         setUserData({
+//           fullName: verifyRequest.data.fullName,
+//           email: verifyRequest.data.email,
+//         })
+//       );
+//       dispatch(setToken(verifyRequest.data.accessToken));
+//       dispatch(setLoading(false));
+//     }
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
 
 export default AuthSlice.reducer;
