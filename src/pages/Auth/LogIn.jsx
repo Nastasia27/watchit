@@ -2,11 +2,12 @@ import React from 'react';
 import { Paper, TextField, Button } from '@mui/material';
 import { useRef , useState} from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {Grid} from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 const Register = () => {
     const auth = getAuth();
 
-    const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -15,29 +16,20 @@ const Register = () => {
         console.log(e);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in 
                 const user = userCredential.user;
                 console.log(user);
-                // ...
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
             });
-
-        const data = {
-            fullName,
-            email,
-            password
-        }
-        console.log(data);
     };
 
     return(
         <div>
             <Paper sx={{padding:'50px'}}>
                 <form style={{display:'flex', flexDirection:'column', gap:'10px'}} onSubmit={handleFormSubmit}>
-                    <h1>Log in</h1>
+                    <h1 style={{margin:'auto'}}>Log in</h1>
                     <TextField 
                        value={email} 
                        onChange={(e) => setEmail(e.target.value)} 
@@ -49,7 +41,14 @@ const Register = () => {
                        type='password' 
                        name='password'/>
                    
-                    <Button type='submit'>Log in</Button>
+                    <Button type='submit' size="large" variant="outlined">Log in</Button>
+                    <Grid conteiner display={"flex"} sx={{marginTop:'10px'}} alignItems="flex-end">
+                    <Typography variant="caption" display="block" gutterBottom>
+                        Don't have an account?
+                    </Typography>
+                        <Button size="small" href='register' >Register</Button>
+                    </Grid>
+                    
                 </form>
             </Paper>
         </div>
@@ -57,4 +56,3 @@ const Register = () => {
 }
 
 export default Register;
-//accessToken

@@ -7,6 +7,7 @@ import FilmDetails from './pages/FilmDetails';
 import Auth from './layouts/Auth';
 import Register from './pages/Auth/Register';
 import Actor from './pages/Actor';
+import LogIn from './pages/Auth/LogIn'
 import PrivateRoute from './components/ResponsiveAppBar/PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
@@ -42,10 +43,10 @@ const router = createBrowserRouter([
         path: 'register',
         element: <Register/>,
       },
-      // {
-      //   path: '/films',
-      //   element: <Films/>
-      // }
+      {
+        path: 'login',
+        element: <LogIn/>
+      }
     ]
   }
 ])

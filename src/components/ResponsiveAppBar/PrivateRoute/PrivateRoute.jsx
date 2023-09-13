@@ -1,33 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux/es/hooks/useSelector";
-import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useState } from "react";
+import { getAuth } from "firebase/auth";
+import { Outlet } from "react-router-dom";
 
 
-const PrivateRoute = ({children}) => {
+const PrivateRoute = () => {
     const auth = getAuth();
-    const [user, setUser] = useState(auth.currentUser);
-    
-    useEffect(() => {
-      const unsubscribe =   onAuthStateChanged((maybeUser) => {
-        if (maybeUser != null) {
-          return setUser(maybeUser);
-          <Navigate to={'/auth/register'}/>;
-        }
-        return  () => unsubscribe();  
-      })
-        // const unsubscribe = onAuthStateChanged(auth, (user) => {
-        //   if (!user) {
-        //     return <Navigate to={'/auth/register'} />;
-        //   }
-        // });
-        // return () => unsubscribe();
-      }, []);
-    
-      return children;
-    
-};
+    if (auth.currentUser) {
+      return <Outlet />;
+    } else {
+      return <Navigate to="/auth/register" />;
+    }
+  };
 
 export default PrivateRoute;
