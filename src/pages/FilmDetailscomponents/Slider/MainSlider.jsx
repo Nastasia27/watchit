@@ -35,8 +35,8 @@ export default function App() {
                           <div className='text-block'>
                             <h1 style={{textTransform:'uppercase'}}>{show.name}</h1>
                             <Typography>{}</Typography>
-                            <a  href={`/films/${show.id}`} >
-                            <Button variant="outlined">Show more</Button>
+                            <a style={{textDecoration:'none'}} href={`/films/${show.id}`} >
+                            <Button  variant="outlined">Show more</Button>
                             </a>
                           </div>
                         </div>
