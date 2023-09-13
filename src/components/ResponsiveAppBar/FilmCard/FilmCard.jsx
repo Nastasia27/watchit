@@ -22,7 +22,7 @@ export default function FilmCard({
   return (
     <Card sx={{ maxWidth: 395,
       height: 222,
-      position: "relative"}}>
+      position: "relative", margin:'10px'}}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -47,7 +47,7 @@ export default function FilmCard({
               top:100,  
              }}>
               <Typography gutterBottom variant="p" component="div" sx={{
-                color:"#fff", fontSize:15
+                color:"#fff", fontSize:15, textTransform:'uppercase'
                }}>
                {name}
               </Typography>

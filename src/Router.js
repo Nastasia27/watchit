@@ -7,6 +7,8 @@ import FilmDetails from './pages/FilmDetails';
 import Auth from './layouts/Auth';
 import Register from './pages/Auth/Register';
 import Actor from './pages/Actor';
+import MainSwiper from '../src/pages/FilmDetailscomponents/Slider/MainSlider';
+import FilmByGenre from './pages/FilmsByGenre';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,13 @@ const router = createBrowserRouter([
       {
         path: '/films/actor/:Id',
         element: <Actor/>
+      },
+      {
+        path: '',
+        element: <MainSwiper/>,
+      },
+      {  path: '/films/Genre/:Genres',
+        element: <FilmByGenre/>
       }
     ]
   },
