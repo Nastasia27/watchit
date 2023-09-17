@@ -7,8 +7,13 @@ import FilmDetails from './pages/FilmDetails';
 import Auth from './layouts/Auth';
 import Register from './pages/Auth/Register';
 import Actor from './pages/Actor';
+
+import LogIn from './pages/Auth/LogIn'
+import PrivateRoute from './components/ResponsiveAppBar/PrivateRoute/PrivateRoute';
+
 import MainSwiper from '../src/pages/FilmDetailscomponents/Slider/MainSlider';
 import FilmByGenre from './pages/FilmsByGenre';
+
 
 const router = createBrowserRouter([
   {
@@ -18,19 +23,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/home',
-        element: <Home/>,
+        element: <PrivateRoute><Home/></PrivateRoute> ,
       },
       {
         path: '/films',
-        element: <Films/>
+        element: <PrivateRoute><Films/></PrivateRoute>,
       },
       {
         path: '/films/:filmId',
-        element: <FilmDetails/>
+        element: <PrivateRoute><FilmDetails/></PrivateRoute>,
       },
       {
         path: '/films/actor/:Id',
-        element: <Actor/>
+        element:<PrivateRoute><Actor/></PrivateRoute>,
       },
       {
         path: '',
@@ -50,10 +55,10 @@ const router = createBrowserRouter([
         path: 'register',
         element: <Register/>,
       },
-      // {
-      //   path: '/films',
-      //   element: <Films/>
-      // }
+      {
+        path: 'login',
+        element: <LogIn/>
+      }
     ]
   }
 ])
