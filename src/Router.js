@@ -26,11 +26,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/films/:filmId',
-        element: <PrivateRoute><FilmDetails/></PrivateRoute>
+        element: <FilmDetails/>
       },
       {
         path: '/films/actor/:Id',
-        element:<PrivateRoute><Actor/></PrivateRoute> 
+        element:<Actor/>
       }
     ]
   },
