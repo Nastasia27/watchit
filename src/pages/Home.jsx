@@ -1,14 +1,10 @@
 import React from 'react';
-import FilmCard from '../components/ResponsiveAppBar/FilmCard/FilmCard';
 import { Grid } from '@mui/material';
 import { useState, useEffect, useRef } from 'react';
 import useRequest from '../hooks/useRequest';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
-import useRequestCrime from '../hooks/useRequestNew';
 import {Typography} from '@mui/material';
-import { Link } from 'react-router-dom';
 
 
 import 'swiper/css';
@@ -18,38 +14,31 @@ import '../Swiper.css'
 import 'swiper/css/effect-fade';
 
 import {useDispatch, useSelector } from 'react-redux';
-import { setSearch } from '../store/SearchSlice';
 import useRequestNew from '../hooks/useRequestNew';
-import Slider from './FilmDetailscomponents/Slider/Slider';
-
-
+import Button from '@mui/material/Button';
 
 
 function Home() {
-  //const [search, setSearch] = useState('');
-  const apiSearch = useSelector((state) => state.search.search)
-  const searchRef = useRef('');
   const crimeFilms = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Crime');
-
-
   const comedyFilms = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Comedy');
 
-
-  const apiData = useRequest(apiSearch);
-  const dispatch = useDispatch();
-
+  const [genres, setGenres] = useState([]);
   const handleCardClick = (id) => {
     console.log("ID:", id)
-  }
-  const handleSearch = (e) => {
-    dispatch (setSearch(e.target.value));
-  }
-
+  };
+  const handleButtonClick = (genre) => {
+    setGenres(genre);
+  };
 
   return (
     <>
     <Grid container>
-      <Typography sx={{textTransform:'uppercase'}} margin='auto' paddingTop="40px" textAlign="center" variant='h5'>Comedy films</Typography>
+      <Grid container sx={{display:'flex', direction:'row', justifyContent:'space-between', alignItems:'flex-end', margin:'60px 40px 0'}}>
+        <Typography sx={{textTransform:'uppercase'}}  textAlign="center" variant='h5'>Comedy films</Typography>
+        <a href={`/films/Genre/${genres}`}>
+          <Button onClick={() => handleButtonClick('Comedy')} variant="text">Show all</Button>
+        </a>
+      </Grid>
       <Grid container >
       <Swiper
         effect={'coverflow'}
@@ -63,7 +52,7 @@ function Home() {
           modifier: 1,
           slideShadows: true,
         }}
-        style={{height:'400px'}}
+        style={{height:'450px'}}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -84,12 +73,17 @@ function Home() {
         ))}
       </Swiper>
       </Grid>  
-      <Typography sx={{textTransform:'uppercase'}} margin='auto' paddingTop="80px" textAlign="center" variant='h6'>Crime films</Typography>
+        <Grid container sx={{display:'flex', direction:'row', justifyContent:'space-between', alignItems:'flex-end', margin:'60px 40px 10px'}}>
+          <Typography sx={{textTransform:'uppercase'}}  textAlign="center" variant='h6'>Crime films</Typography>
+         <a href={`/films/Genre/${genres}`}> 
+            <Button onClick={() => handleButtonClick('Crime')} variant="text">Show all</Button>
+         </a>
+        </Grid>
       <Grid container sx={{ display:'flex',
           justifyContent:'center',
             alignItems: 'center'}} >
           <Swiper
-            slidesPerView={6}
+            slidesPerView={4}
             spaceBetween={20}
             pagination={{
             clickable: true,
