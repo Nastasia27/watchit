@@ -11,14 +11,11 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 function Footer () {
     return( 
       <footer >
-        <Grid container spacing={3} 
-           direction="row"
-           justifyContent="space-around"
-           alignItems="center"
-           sx={{display:'flex', alignItems:'flex-start', margin:'40px 5px'}}
+        <Grid container  
+           sx={{ display:'flex', alignItems:'center', margin:'60px 10px 20px'}}
            >
-           <Grid item xs={11} md={8} >
-               <Stack spacing={2} direction="row">
+           <Grid container xs={11} md={8} sx={{ display:'flex', direction:'column', alignItems:'center', margin:'auto'}}>
+               <Stack spacing={1} direction="row" >
                   <Button size="small"  variant="text">Terms Of Use</Button>
                   <Button size="small" variant="text">Privacy-policy</Button>
                   <Button size="small" variant="text">FAQ</Button>

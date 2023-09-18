@@ -35,7 +35,7 @@ function Home() {
     <Grid container>
       <Grid container sx={{display:'flex', direction:'row', justifyContent:'space-between', alignItems:'flex-end', margin:'60px 40px 0'}}>
         <Typography sx={{textTransform:'uppercase'}}  textAlign="center" variant='h5'>Comedy films</Typography>
-        <a href={`/films/Genre/${genres}`}>
+        <a style={{textDecoration:'none'}} href={`/films/Genre/${genres}`}>
           <Button onClick={() => handleButtonClick('Comedy')} variant="text">Show all</Button>
         </a>
       </Grid>
@@ -75,7 +75,7 @@ function Home() {
       </Grid>  
         <Grid container sx={{display:'flex', direction:'row', justifyContent:'space-between', alignItems:'flex-end', margin:'60px 40px 10px'}}>
           <Typography sx={{textTransform:'uppercase'}}  textAlign="center" variant='h6'>Crime films</Typography>
-         <a href={`/films/Genre/${genres}`}> 
+         <a style={{textDecoration:'none'}} href={`/films/Genre/${genres}`}> 
             <Button onClick={() => handleButtonClick('Crime')} variant="text">Show all</Button>
          </a>
         </Grid>
