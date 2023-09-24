@@ -20,8 +20,8 @@ export default function FilmCard({
 
   } 
   return (
-    <Card sx={{ maxWidth: 395,
-      height: 222,
+    <Card sx={{ maxWidth: 450,
+      height: "100%",
       position: "relative", margin:'10px'}}>
       <CardActionArea>
         <CardMedia
@@ -36,7 +36,7 @@ export default function FilmCard({
           left: 0,
           width: "100%",
           height: "100%", 
-          backgroundImage:"linear-gradient(90deg, rgba(0, 0, 0, 0.80) 0%, rgba(20, 20, 20, 0.40) 50%, rgba(83, 100, 141, 0.00) 100%)"}}>
+          backgroundImage:"linear-gradient(90deg,rgba(0, 0, 0, 0.80) 0%, rgba(20, 20, 20, 0.40) 70%, rgba(83, 100, 141, 0.00) 100%)"}}>
             <Box sx={{
               position:"absolute",
               justifyContent:"space-evenly",
@@ -46,8 +46,9 @@ export default function FilmCard({
               left:10,
               top:100,  
              }}>
+              
               <Typography gutterBottom variant="p" component="div" sx={{
-                color:"#fff", fontSize:15, textTransform:'uppercase'
+                color:"#fff", fontSize:18, textTransform:'uppercase'
                }}>
                {name}
               </Typography>

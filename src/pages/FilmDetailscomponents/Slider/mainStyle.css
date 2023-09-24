@@ -16,7 +16,7 @@
 
   .gradient-block {
     background: rgb(0,0,0);
-    background: linear-gradient(90deg, rgba(0,0,0,1) 53%, rgba(0,0,0,1) 62%, rgba(255,255,255,0) 93%);
+    background: linear-gradient(90deg, rgba(0,0,0,0.8267900910364145) 51%, rgba(0,0,0,0.6475183823529411) 76%, rgba(4,4,4,0.14891894257703087) 100%);
     z-index: 1;
     width: 100%;
     height: 100%;
@@ -32,7 +32,7 @@
     right: 0;
     top: 0;
     height: 100%;
-    width: 50% !important;
+    width: 100% !important;
     object-fit: contain ;
   }
   
