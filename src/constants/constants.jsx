@@ -4,11 +4,7 @@ export const MENU = [
         link: '/home'
     },
     {
-        name: 'films',
-        link: '/films'
-    },
-    {
         name: 'tv shows',
-        link: '/tvshows'
+        link: '/films'
     }
 ]

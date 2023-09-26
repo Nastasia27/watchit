@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import { useState, useEffect, useRef } from 'react';
-import useRequest from '../hooks/useRequest';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
 import {Typography} from '@mui/material';
@@ -13,7 +12,6 @@ import 'swiper/css/navigation';
 import '../Swiper.css'
 import 'swiper/css/effect-fade';
 
-import {useDispatch, useSelector } from 'react-redux';
 import useRequestNew from '../hooks/useRequestNew';
 import Button from '@mui/material/Button';
 
@@ -21,17 +19,46 @@ import Button from '@mui/material/Button';
 function Home() {
   const crimeFilms = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Crime');
   const comedyFilms = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Comedy');
+  const popular = useRequestNew('https://dolphin-app-pc6ii.ondigitalocean.app/article/popular');
+
 
   const [genres, setGenres] = useState([]);
-  const handleCardClick = (id) => {
-    console.log("ID:", id)
-  };
   const handleButtonClick = (genre) => {
     setGenres(genre);
   };
 
   return (
     <>
+    <Grid container >
+    <Swiper style={{margin:'10px 20px 0', paddingTop:'0', width:'100%', height: "600px", pagination: {
+    el: '.swiper-pagination',
+    type: 'bullets'}}} 
+    loop={true} pagination={true} 
+    autoplay={{
+      delay: 2000,
+    }}
+    modules={[Pagination, Autoplay]} className="mySwiper">
+        {popular.map((show, index) =>  (
+                <Grid conteiner key={index}>
+                    <SwiperSlide className='swiper-slide-main' style={{height:'100%'}} key={index}>
+                        {show.image && show.image.original &&(
+                            
+                            <img src={show.image.original} />
+                        )}
+                        <div className='gradient-block'>
+                          <div className='text-block'>
+                            <h1 style={{textTransform:'uppercase'}}>{show.name}</h1>
+                            <Typography>{}</Typography>
+                            <a style={{textDecoration:'none'}} href={`/films/${show.id}`} >
+                            <Button  variant="outlined">Show more</Button>
+                            </a>
+                          </div>
+                        </div>
+                    </SwiperSlide>
+              </Grid>
+            ))}
+      </Swiper>
+    </Grid>
     <Grid container>
       <Grid container sx={{display:'flex', direction:'row', justifyContent:'space-between', alignItems:'flex-end', margin:'60px 40px 0'}}>
         <Typography sx={{textTransform:'uppercase'}}  textAlign="center" variant='h5'>Comedy films</Typography>
