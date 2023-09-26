@@ -23,7 +23,7 @@ function Films() {
         setGenres(genre);
     };
     console.log(genres)
-    const filmsByGenre = useRequestNew(`http://dolphin-app-pc6ii.ondigitalocean.app/article/${genres}`);
+    const filmsByGenre = useRequestNew(`https://dolphin-app-pc6ii.ondigitalocean.app/article/${genres}`);
     console.log(filmsByGenre);
  
     return(
