@@ -26,7 +26,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Logout'];
 
 function ResponsiveAppBar() {
 

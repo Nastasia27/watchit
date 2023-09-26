@@ -42,7 +42,7 @@ const router = createBrowserRouter([
         element: <MainSwiper/>,
       },
       {  path: '/films/Genre/:Genres',
-        element: <FilmByGenre/>
+        element: <PrivateRoute><FilmByGenre/></PrivateRoute>
       }
     ]
   },
