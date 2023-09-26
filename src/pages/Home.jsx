@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import { useState, useEffect, useRef } from 'react';
-import useRequest from '../hooks/useRequest';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
 import {Typography} from '@mui/material';
@@ -13,7 +12,6 @@ import 'swiper/css/navigation';
 import '../Swiper.css'
 import 'swiper/css/effect-fade';
 
-import {useDispatch, useSelector } from 'react-redux';
 import useRequestNew from '../hooks/useRequestNew';
 import Button from '@mui/material/Button';
 
@@ -25,9 +23,6 @@ function Home() {
 
 
   const [genres, setGenres] = useState([]);
-  const handleCardClick = (id) => {
-    console.log("ID:", id)
-  };
   const handleButtonClick = (genre) => {
     setGenres(genre);
   };
@@ -35,7 +30,7 @@ function Home() {
   return (
     <>
     <Grid container >
-    <Swiper style={{margin:'0', paddingTop:'0', width:'100%', height: "100vh", pagination: {
+    <Swiper style={{margin:'10px 20px 0', paddingTop:'0', width:'100%', height: "600px", pagination: {
     el: '.swiper-pagination',
     type: 'bullets'}}} 
     loop={true} pagination={true} 
