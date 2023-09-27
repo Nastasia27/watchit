@@ -13,6 +13,7 @@ import PrivateRoute from './components/ResponsiveAppBar/PrivateRoute/PrivateRout
 
 import MainSwiper from '../src/pages/FilmDetailscomponents/Slider/MainSlider';
 import FilmByGenre from './pages/FilmsByGenre';
+import Profile from './pages/Auth/Profile';
 
 
 const router = createBrowserRouter([
@@ -43,7 +44,11 @@ const router = createBrowserRouter([
       },
       {  path: '/films/Genre/:Genres',
         element: <PrivateRoute><FilmByGenre/></PrivateRoute>
-      }
+      },
+      {
+        path: '/profile',
+        element: <PrivateRoute> <Profile/></PrivateRoute>,
+      },
     ]
   },
   {
