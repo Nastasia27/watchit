@@ -8,6 +8,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {Grid} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import GoogleIcon from '@mui/icons-material/Google';
+import userUpdate from './userUpdate';
 
 
 const Register = () => {
@@ -25,6 +26,8 @@ const Register = () => {
         try {
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           const user = userCredential.user;
+          userUpdate(fullName);
+          console.log(fullName);
           navigate("/home");
             
         } catch (error) {
