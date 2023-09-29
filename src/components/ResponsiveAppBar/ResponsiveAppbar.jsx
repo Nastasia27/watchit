@@ -18,11 +18,7 @@ import './ResponsiveAppBar.css';
 import {MENU} from '../../constants/constants';
 import Input from './Input';
 import Link from '@mui/material/Link';
-
-
-import { styled, alpha } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
+import LogOut from '../../pages/Auth/Logout';
 
 
 
@@ -47,6 +43,12 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+
+  const handleLogOut = () => {
+      LogOut();
+    };
+  
 
   return (
     <AppBar position="static" sx={{backgroundColor:"rgba(18, 17, 18, 0.79)"}}>
@@ -108,7 +110,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src="/broken-image.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -127,11 +129,14 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseUserMenu}>
+                  <a style={{textDecoration:'none', color:'white'}} href="/profile">
+                    <Typography textAlign="center">Profile</Typography>
+                  </a>
+              </MenuItem>
+              <MenuItem onClick={ () => {handleCloseUserMenu(); handleLogOut()}}>
+                  <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
