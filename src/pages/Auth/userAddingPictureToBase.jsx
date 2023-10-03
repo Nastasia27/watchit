@@ -1,12 +1,10 @@
 import { getAuth, updateProfile } from "firebase/auth";
 
-function userUpdate(name) {
+function userAddingPictureToBase(picture) {
     const auth = getAuth();
-    const userName = name;
-    console.log(userName);
 
     updateProfile(auth.currentUser, {
-    displayName: userName, 
+        photoURL: picture
     }).then(() => {
     // Profile updated!
     // ...
@@ -16,4 +14,4 @@ function userUpdate(name) {
     });
 }
 
-export default userUpdate;
+export default userAddingPictureToBase;
