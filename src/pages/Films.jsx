@@ -65,14 +65,22 @@ function Films() {
             ))}
             </Swiper>
         </Grid>
-        <Stack spacing={2} direction="row" alignItems='center' alignContent='center' margin='5px auto'>
-            <Button  onClick={() => handleButtonClick('popular')} variant="outlined">Popular</Button>
-            <Button onClick={() => handleButtonClick('byGenre/Comedy')} variant="outlined">Comedy</Button>
-            <Button onClick={() => handleButtonClick('byGenre/Crime')} variant="outlined">Crime</Button>
-            <Button onClick={() => handleButtonClick('byGenre/Drama')} variant="outlined">Drama</Button>
-            <Button onClick={() => handleButtonClick('byGenre/Action')} variant="outlined">Action</Button>
-            <Button onClick={() => handleButtonClick('byGenre/Adventure')} variant="outlined">Adventure</Button>
-        </Stack>
+        <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+                <Stack spacing={2} direction="row" alignItems='center' alignContent='center'  justifyContent='space-around'>
+                    <Button  onClick={() => handleButtonClick('popular')} variant="outlined">Popular</Button>
+                    <Button onClick={() => handleButtonClick('byGenre/Comedy')} variant="outlined">Comedy</Button>
+                    <Button onClick={() => handleButtonClick('byGenre/Crime')} variant="outlined">Crime</Button>
+                 </Stack>
+            </Grid>
+            <Grid item xs={12} sm={6} alignItems='center' justifyContent='center'>
+                <Stack spacing={2} direction="row" alignItems='center' alignContent='center'  justifyContent='space-around'>
+                    <Button onClick={() => handleButtonClick('byGenre/Drama')} variant="outlined">Drama</Button>
+                    <Button onClick={() => handleButtonClick('byGenre/Action')} variant="outlined">Action</Button>
+                    <Button onClick={() => handleButtonClick('byGenre/Adventure')} variant="outlined">Adventure</Button>
+                 </Stack>
+            </Grid>
+        </Grid>
         <Grid container sx={{display:'flex', alignContent:"center", alignItems:"center", justifyContent:"center", marginTop:'10px'}}>
             
                 {filmsByGenre.map((show, index) =>  (

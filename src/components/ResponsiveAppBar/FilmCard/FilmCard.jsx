@@ -22,11 +22,11 @@ export default function FilmCard({
   return (
     <Card sx={{ maxWidth: 450,
       height: "100%",
-      position: "relative", margin:'10px'}}>
+      position: "relative", margin:'20px 10px'}}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="395"
+          height="450"
           image={image}
           alt={name}
         />
