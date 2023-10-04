@@ -19,13 +19,10 @@ import {MENU} from '../../constants/constants';
 import Input from './Input';
 import Link from '@mui/material/Link';
 import LogOut from '../../pages/Auth/Logout';
+import { getAuth } from "firebase/auth";
 
-
-
-const settings = ['Profile', 'Logout'];
 
 function ResponsiveAppBar() {
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -49,6 +46,9 @@ function ResponsiveAppBar() {
       LogOut();
     };
   
+  const auth = getAuth();
+  const user = auth.currentUser;
+  console.log(user)
 
   return (
     <AppBar position="static" sx={{backgroundColor:"rgba(18, 17, 18, 0.79)"}}>
@@ -110,7 +110,14 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/broken-image.jpg" />
+                {user ? (
+                      <Avatar 
+                      src={user.photoURL}
+                      sx={{ width: 45, height: 45, margin:'10px' }} />) : (
+                          <Avatar 
+                      src="/broken-image.jpg"
+                      sx={{ width: 45, height: 45, margin:'10px' }} />
+                      )}
               </IconButton>
             </Tooltip>
             <Menu

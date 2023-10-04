@@ -8,6 +8,7 @@ import userAddingPictureToStorage from './userAddingPictureToStorage';
 function Profile() { 
     const auth = getAuth();
     const user = auth.currentUser;
+    console.log(user)
 
     const handleUploadAvatarToStorage = (e) => {
         const file = e.target.files[0];
