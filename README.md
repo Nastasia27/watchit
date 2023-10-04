@@ -22,5 +22,8 @@ Front End fully developed using JS and CSS in React JS
 * Firebase Storage
 * Firebase Authentication
 
+### Hosting
+Versel
+https://watchit-nine.vercel.app/
 
 
