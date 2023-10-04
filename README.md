@@ -8,8 +8,19 @@ This resource will be useful for people interested in the world of television an
 1 month
 
 ## Technologies Used:
-* 
-* 
+Front End fully developed in React JS
+
+### JavaScript libraries and frameworks:
+* React
+* Redux
+* Axios
+* MUI
+* Swiper
+
+## Back End:
+* Firebase Database
+* Firebase Storage
+* Firebase Authentication
 
 
 
