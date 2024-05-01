@@ -31,7 +31,7 @@ function TabsComponent({summary, rating=[]}) {
             <div dangerouslySetInnerHTML={{__html: summary}}></div>
         </TabPanel>
         <TabPanel value="2">
-            Avarage rating: {rating.average}</TabPanel>
+            Avarage rating: {rating}</TabPanel>
       </TabContext>
     </Box>
   );

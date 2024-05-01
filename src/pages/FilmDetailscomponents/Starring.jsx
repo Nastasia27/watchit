@@ -14,17 +14,24 @@ function Starring() {
   const [starringData, setStarringData] = useState([]);
   const {filmId} = useParams();
   const [visibleStarring, setVisibleStarring] = useState(2);
+
+
     
     useEffect(() => {
         async function starringRequest(){
           try {
-            const response = await axios.get(`https://api.tvmaze.com/shows/${filmId}/cast`);
-            setStarringData(response.data);
-            
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/${filmId}/credits`, {
+              params: {
+                language:'en-US',
+                api_key:'33584e6a5217392f99d9ce3ecf5ba429',
+              }
+            });
+            console.log(response.data.cast);
+            setStarringData(response.data.cast);
+            console.log(starringData);
           } catch (error) {
             console.error(error);
           }
-          
         }
         starringRequest();
       }, [filmId]);
@@ -36,6 +43,7 @@ function Starring() {
     }
   };
   const visibleCards = starringData.slice(0,visibleStarring);
+  console.log(visibleCards);
 
   return (
     <div>
@@ -43,19 +51,19 @@ function Starring() {
         STARRING
       </Typography>
       <Grid container spacing={2} sx={{ margin: 'auto' }}>
-        {visibleCards.map(({person, character, index}) =>  (
+        {visibleCards.map(({name, character, profile_path, id, index}) =>  (
           <Grid item xs={12} sm={6} md={6} key={index} direction="row"
           justifyContent="center"
           alignItems="center">
             <Link 
-              to={`/films/actor/${person.id}`} 
+              to={`/films/actor/${id}`} 
               style={{
                 textDecoration:'none',
                }}>
                 <StarCard
-            name={person.name}
-            role={character.name}
-            image={person.image ? person.image.medium : ''} 
+            name={name}
+            role={character}
+            image={`https://image.tmdb.org/t/p/original${profile_path}`} 
             />
                </Link>
           </Grid>

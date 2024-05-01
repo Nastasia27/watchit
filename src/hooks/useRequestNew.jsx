@@ -7,8 +7,13 @@ function useRequestNew (url) {
     useEffect(() => {
         async function makeRequest(){
             try {
-              const response = await axios.get(url);
-              setApiData(response.data);
+              const response = await axios.get(url , {
+                params: {
+                  language:'en-US',
+                  api_key:'33584e6a5217392f99d9ce3ecf5ba429',
+                }
+              });
+              setApiData(response.data.results);
             } catch (error) {
                 console.error(error);
             }

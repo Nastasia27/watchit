@@ -12,6 +12,7 @@ import Stack from '@mui/material/Stack';
 
 
 function Header({name, genres=[], premiered, averageRuntime, image, rating={}}) {
+  console.log(rating);
     const bull = (
         <Box
           component="span"
@@ -38,14 +39,14 @@ function Header({name, genres=[], premiered, averageRuntime, image, rating={}}) 
                  {name}
               </Typography>
               <Stack spacing={1} sx={{marginLeft:'20px'}}>
-                 <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly value={rating.average/2}/>
+                 <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly value={rating/2}/>
               </Stack>
               <Typography variant="body1" sx={{marginLeft:'10px'}} color="grey" >
-                 {rating.average/2}
+                 {rating}
               </Typography>
             </Grid>
             <Typography variant="body1" sx={{fontWeight:'600'}} color="rgb(225, 0, 0)">
-              {genres[0]} 
+              {/* {genres.length > 0 && genres[0].name}  */}
             </Typography>
             <Typography variant="body2">
               {averageRuntime} min {bull} Premierd: {premiered} {bull} 449 views
@@ -60,9 +61,9 @@ function Header({name, genres=[], premiered, averageRuntime, image, rating={}}) 
             </Grid>
           </CardContent>
           <img 
-          src={image ? image.medium : ''}
+          src={image}
           alt={name}image
-          style={{height:'100%', margin:'auto 20px auto'}}/>
+          style={{height:'250px', margin:'auto 20px auto'}}/>
         </Grid>
       );
       return (

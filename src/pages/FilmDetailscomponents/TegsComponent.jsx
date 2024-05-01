@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 
 
 function Tags({genres=[]}) {
+  const genreNames = genres.map(genre => genre.name);
     return(
         <Grid sx={{display:'flex',
         direction:"row",
@@ -19,7 +20,7 @@ function Tags({genres=[]}) {
               TAGS: 
             </Typography>
             <Typography variant="body2" sx={{fontWeight:'400'}} color="white">
-              {genres.join(', ')} 
+              {genreNames.join(', ')} 
             </Typography>
         </Grid>
     )

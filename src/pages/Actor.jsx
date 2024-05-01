@@ -30,11 +30,20 @@ function Actor() {
     async function actorRequest(){
       try {
         const response = await axios.get(
-            `https://api.tvmaze.com/people/${Id}?embed=castcredits`);
+          `https://api.themoviedb.org/3/person/${Id}`, {
+            params: {
+              language:'en-US',
+              api_key:'33584e6a5217392f99d9ce3ecf5ba429',
+          }});
+          const responseAboutFilm = await axios.get(
+            `https://api.themoviedb.org/3/person/${Id}/movie_credits`, {
+              params: {
+                language:'en-US',
+                api_key:'33584e6a5217392f99d9ce3ecf5ba429',
+            }});
+          console.log(responseAboutFilm);
         setActorData(response.data);
-        
-        setFimData(response.data._embedded.castcredits.map((credit) => credit._links.show.href)
-        );
+        setFimData(responseAboutFilm.data.cast);
       } catch (error) {
         console.error(error);
       }
@@ -42,6 +51,7 @@ function Actor() {
     }
     actorRequest();
   }, [Id]);
+  console.log(filmData);
 
   useEffect(() => {
     async function fetchFilmData() {
@@ -65,7 +75,7 @@ function Actor() {
           <Grid container sm={12} sx={{display:'flex', direction:'row', margin:'20px'}}>
             <Grid item sm={3} sx={{margin:'40px'}}>
               <img 
-                src={actorData.image ? actorData.image.medium : ''} 
+                src={`https://image.tmdb.org/t/p/original${actorData.profile_path}`} 
                 alt={actorData.name} 
                 style={{width:'100%', maxWidth:'300px' }}
                />
@@ -84,14 +94,14 @@ function Actor() {
                         className="mySwiper"
                         style={{padding:0}}
                     >
-                        {filmDataArray.map((show, index) =>  (
+                        {filmData.map((data, index) =>  (
                             <Grid conteiner key={index}>
                                 <SwiperSlide key={index} >
-                                    {show.image && show.image.original &&(
-                                        <a  href={`/films/${show.id}`} >
-                                        <img src={show.image.medium} />
+                                    
+                                        <a  href={`/films/${data.id}`} >
+                                        <img src={`https://image.tmdb.org/t/p/original${data.poster_path}`} />
                                     </a>
-                                    )}
+                                    
                                 </SwiperSlide>
                         </Grid>
                         ))}
@@ -102,16 +112,9 @@ function Actor() {
           </Grid>
           <Grid sx={{margin:'0 50px'}}>
                 <Typography  style={{paddingTop:'30px', textTransform:'uppercase'}}>Personal information</Typography>
-                <Stack direction="row" spacing={1} style={{margin:'20px'}}>
-                   <IconButton aria-label="delete" color="primary">
-                     <FacebookIcon />
-                   </IconButton>
-                   <IconButton aria-label="delete" color="primary">
-                     <TwitterIcon />
-                   </IconButton>
-                </Stack>
+                <Typography style={{padding:'20px 0'}} variant="body2">{actorData.biography}</Typography> 
                 <Typography variant="body2">Date of birth: {actorData.birthday}</Typography>
-                <Typography variant="body2">Country: {actorData.country ? actorData.country.name : ""}</Typography>
+                <Typography variant="body2">Country: {actorData.place_of_birth}</Typography>
           </Grid>
         </>
     )
